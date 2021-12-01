@@ -1,13 +1,17 @@
 #include "libft.h"
 
-static int	check_sep(char const a, char c)
+static char	**free_array(char **ptr, int i)
 {
-	if (a == c)
-		return (1);
+	while (i > 0)
+	{
+		i--;
+		free(ptr[i]);
+	}
+	free(ptr);
 	return (0);
 }
 
-static int	count_word(char const *str, char c)
+static int	ft_count_words(char const *str, char c)
 {
 	int	i;
 	int	count;
@@ -16,63 +20,73 @@ static int	count_word(char const *str, char c)
 	count = 0;
 	while (str[i] != '\0')
 	{
-		while (str[i] != '\0' && check_sep(str[i], c))
+		if (str[i] == c)
 			i++;
-		if (str[i] != '\0')
+		else
+		{
 			count++;
-		while (str[i] != '\0' && !check_sep(str[i], c))
-			i++;
+			while (str[i] && str[i] != c)
+				i++;
+		}
 	}
 	return (count);
 }
 
-static int	len_sep(char const *str, char c)
+static char	*ft_putword(char *word, char const *s, int i, int word_len)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	while (str[i] && !check_sep(str[i], c))
-		i++;
-	return (i);
+	j = 0;
+	while (word_len > 0)
+	{
+		word[j] = s[i - word_len];
+		j++;
+		word_len--;
+	}
+	word[j] = '\0';
+	return (word);
 }
 
-static char	*string(char const *str, char c)
+static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 {
-	int		length_string;
-	int		i;
-	char	*word;
+	int	i;
+	int	word;
+	int	word_len;
 
 	i = 0;
-	length_string = len_sep(str, c);
-	word = (char *)malloc(sizeof(char) * (length_string + 1));
-	while (i < length_string)
+	word = 0;
+	word_len = 0;
+	while (word < num_words)
 	{
-		word[i] = str[i];
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
+		while (s[i] && s[i] != c)
+		{
+			i++;
+			word_len++;
+		}
+		s2[word] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!s2)
+			return (free_array(s2, word));
+		ft_putword(s2[word], s, i, word_len);
+		word_len = 0;
+		word++;
 	}
-	word[i] = '\0';
-	return (word);
+	s2[word] = 0;
+	return (s2);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**array;
-	int		i;
+	char			**s2;
+	unsigned int	num_words;
 
-	i = 0;
-	array = (char **)malloc(sizeof(char *) * (count_word(s, c) + 1));
-	while (*s != '\0')
-	{
-		while (*s != '\0' && check_sep(*s, c))
-			s++;
-		if (*s != '\0')
-		{
-			array[i] = string(s, c);
-			i++;
-		}
-		while (*s && !check_sep(*s, c))
-			s++;
-	}
-	array[i] = '\0';
-	return (array);
+	if (!s)
+		return (0);
+	num_words = ft_count_words(s, c);
+	s2 = (char **)malloc(sizeof(char *) * (num_words + 1));
+	if (!s2)
+		return (0);
+	s2 = ft_split_words(s, c, s2, num_words);
+	return (s2);
 }

@@ -3,17 +3,20 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*new;
-	size_t	i;
+	size_t	slen;
+	size_t	finish;
 
-	i = 0;
-	new = (char *)malloc(sizeof(char) * len + 1);
-	if (!new || !s)
-		return (NULL);
-	while (s[start + i] && i < len && start < ft_strlen((char *)s))
-	{
-		new[i] = s[start + i];
-		i++;
-	}
-	new[i] = '\0';
+	if (!s)
+		return (0);
+	slen = ft_strlen(s);
+	finish = 0;
+	if (start < slen)
+		finish = slen - start;
+	if (finish > len)
+		finish = len;
+	new = (char *)malloc(sizeof(char) * (finish + 1));
+	if (!new)
+		return (0);
+	ft_strlcpy(new, s + start, finish + 1);
 	return (new);
 }

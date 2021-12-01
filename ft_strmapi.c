@@ -10,7 +10,7 @@ int, char))
 	if (!s)
 		return (NULL);
 	length = ft_strlen(s);
-	res = malloc(length * sizeof(char) + 1 );
+	res = malloc(length * sizeof(char) + 1);
 	if (!res)
 		return (NULL);
 	i = 0;

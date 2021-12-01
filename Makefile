@@ -15,8 +15,8 @@ SRCSB = ft_lstnew_bonus.c ft_lstadd_front_bonus.c \
 OBJS = ${SRCS:.c=.o}
 OBJSB = ${SRCSB:.c=.o}
 NAME = libft.a
-LIBC = ar rc
-CC = gcc
+LIBC = ar rcs
+CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 

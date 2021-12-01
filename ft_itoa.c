@@ -1,60 +1,53 @@
 #include "libft.h"
 
-static int	len(long nb)
+static char	*ft_char(char *s, unsigned int number, long int len)
+{
+	while (number > 0)
+	{
+		s[len--] = 48 + (number % 10);
+		number = number / 10;
+	}
+	return (s);
+}
+
+static long int	ft_len(int n)
 {
 	int	len;
 
 	len = 0;
-	if (nb == 0)
-		len = 2;
-	if (nb < 0)
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
 	{
-		nb *= -1;
 		len++;
-	}
-	while (nb > 0)
-	{
-		nb /= 10;
-		len++;
+		n = n / 10;
 	}
 	return (len);
 }
 
-static char	*int_to_char(char *str, int nb, int nb_len)
-{
-	while (nb > 0)
-	{
-		str[nb_len] = 48 + (nb % 10);
-		nb /= 10;
-		nb_len--;
-	}
-	return (str);
-}
-
 char	*ft_itoa(int n)
 {
-	char	*str;
-	long	nb;
-	int		nb_len;
+	char				*s;
+	long int			len;
+	unsigned int		number;
+	int					sign;
 
-	nb = n;
-	nb_len = len(nb);
-	str = (char *)malloc(nb_len + 1);
-	if (!str)
-		return (0);
-	if (nb == 0)
+	sign = 1;
+	len = ft_len(n);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(s))
+		return (NULL);
+	s[len--] = '\0';
+	if (n == 0)
+		s[0] = '0';
+	if (n < 0)
 	{
-		str[0] = 48;
-		str[1] = '\0';
-		return (str);
+		sign *= -1;
+		number = n * -1;
+		s[0] = '-';
 	}
-	str[nb_len--] = '\0';
-	if (nb < 0)
-	{
-		str[0] = '-';
-		nb *= -1;
-	}
-	if (nb > 0)
-		str = int_to_char(str, nb, nb_len);
-	return (str);
+	else
+		number = n;
+	s = ft_char(s, number, len);
+	return (s);
 }

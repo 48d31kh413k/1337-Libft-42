@@ -7,15 +7,14 @@ void	ft_putnbr_fd(int n, int fd)
 	nb = n;
 	if (nb < 0)
 	{
-		ft_putchar_fd('-', fd);
-		nb = -nb;
-		ft_putnbr_fd(nb, fd);
+		write(fd, "-", 1);
+		nb *= -1;
 	}
-	else if (nb > 9)
+	if (nb > 9)
 	{
 		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);
+		ft_putchar_fd((nb % 10) + '0', fd);
 	}
 	else
-		 ft_putchar_fd((char)(nb + 48), fd);
+		ft_putchar_fd(nb + '0', fd);
 }
