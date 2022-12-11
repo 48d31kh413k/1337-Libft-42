@@ -6,7 +6,7 @@ https://makefiletutorial.com/<br/><br/>https://gl.developpez.com/tutoriel/outil/
 
 
 Pointers <br/>
-https://www.geeksforgeeks.org/void-pointer-c-cpp/?ref=lbp/<br/><br/>https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/<br/><br/>https://www.javatpoint.com/c-dereference-pointer<br/><br/>Functions<br/>https://webdevdesigner.com/q/what-is-the-difference-between-memcmp-strcmp-and-strncmp-in-c-102548/<br/><br/>https://pvs-studio.com/en/blog/posts/cpp/0360/<br/><br/>https://www.geeksforgeeks.org/what-are-static-functions-in-c/<br/><br/>https://www.cs.utah.edu/~germain/PPS/Topics/C_Language/c_functions.html<br/><br/>Data types
+https://www.geeksforgeeks.org/void-pointer-c-cpp/?ref=lbp/<br/><br/>https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/<br/><br/>https://www.javatpoint.com/c-dereference-pointer<br/><br/>Functions<br/>https://webdevdesigner.com/q/what-is-the-difference-between-memcmp-strcmp-and-strncmp-in-c-102548/<br/><br/>https://pvs-studio.com/en/blog/posts/cpp/0360/<br/><br/>https://www.geeksforgeeks.org/what-are-static-functions-in-c/<br/><br/>https://www.cs.utah.edu/~germain/PPS/Topics/C_Language/c_functions.html<br/><br/>Data types<br/>
 https://web.maths.unsw.edu.au/~lafaye/CCM/c/ctype.htm<br/><br/>https://www.arm.linux.org.uk/docs/faqs/signedchar.php<br/><br/>Errors<br/>https://www.geeksforgeeks.org/segmentation-fault-sigsegv-vs-bus-error-sigbus/
 
 https://www.geeksforgeeks.org/program-error-signals/<br/><br/>https://www.educba.com/types-of-errors-in-c/<br/><br/>http://www.yolinux.com/TUTORIALS/C++Signals.html
